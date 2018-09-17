@@ -1,0 +1,6 @@
+{
+  "itemDisplayName": "Service Fabric Lab Cluster",
+  "githubUsername": "krlm",
+  "description": "A secure 3 node, single nodetype Service fabric Cluster.",
+  "summary": "This template allows you to deploy a secure 3 node, Single Node Type Service fabric Cluster running Windows Server 2016 on Standard_Ds1_v2 Size VMs with Windows Azure diagnostics turned on."
+}

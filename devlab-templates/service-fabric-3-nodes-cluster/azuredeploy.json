@@ -64,13 +64,13 @@
         }
     },
     "variables": {
-        "quickstartRepoRoot": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/",
+        "quickstartRepoRoot": "https://raw.githubusercontent.com/krlm/sf-cluster-templates/master/",
         "clusterName": "[concat('sf-', toLower(uniqueString(resourceGroup().name)))]",
         "vaultName": "[concat('kv-', toLower(uniqueString(resourceGroup().name)))]",
         "vaultSecret": "ClusterCertificate",
         "loadBalancedAppPort1": "[parameters('appPort1')]",
         "loadBalancedAppPort2": "[parameters('appPort2')]",
-        "nt0InstanceCount": 5
+        "nt0InstanceCount": 3
     },
     "resources": [
         {
@@ -113,7 +113,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('quickstartRepoRoot'), 'service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json')]",
+                    "uri": "[concat(variables('quickstartRepoRoot'), 'sf-template/azuredeploy.json')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
