@@ -1,0 +1,94 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westeurope"
+        },
+        "networkInterfaceName": {
+            "value": "asdasdasdsafas249"
+        },
+        "networkSecurityGroupName": {
+            "value": "asdasdasdsafas-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": []
+        },
+        "virtualNetworkName": {
+            "value": "mbe-dev-test-vnet"
+        },
+        "addressPrefix": {
+            "value": "10.1.0.0/24"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "subnetPrefix": {
+            "value": "10.1.0.0/24"
+        },
+        "publicIpAddressName": {
+            "value": "asdasdasdsafas-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "asdasdasdsafas"
+        },
+        "virtualMachineRG": {
+            "value": "mbe-dev-test"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "dataDisks": {
+            "value": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "asdasdasdsafas_DataDisk_0",
+                    "storageAccountType": null
+                }
+            ]
+        },
+        "dataDiskResources": {
+            "value": [
+                {
+                    "name": "asdasdasdsafas_DataDisk_0",
+                    "diskSizeGB": 128,
+                    "sku": "Premium_LRS",
+                    "creationData": {
+                        "createOption": "empty"
+                    }
+                }
+            ]
+        },
+        "virtualMachineSize": {
+            "value": "Standard_DS1_v2"
+        },
+        "adminUsername": {
+            "value": "localAdmin"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "mbedevtestdiag"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "Microsoft.Storage/storageAccounts/mbedevtestdiag"
+        },
+        "diagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "diagnosticsStorageAccountKind": {
+            "value": "Storage"
+        }
+    }
+}
