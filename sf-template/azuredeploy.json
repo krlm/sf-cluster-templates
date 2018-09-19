@@ -559,7 +559,6 @@
               "version": "[parameters('vmImageVersion')]"
             },
             "osDisk": {
-              "diskSizeGB": "[variables('diskSize')]",
               "managedDisk": {
                 "storageAccountType": "Premium_LRS"
               },
