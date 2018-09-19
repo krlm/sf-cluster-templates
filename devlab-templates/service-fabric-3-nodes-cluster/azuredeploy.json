@@ -70,7 +70,8 @@
         "vaultSecret": "ClusterCertificate",
         "loadBalancedAppPort1": "[parameters('appPort1')]",
         "loadBalancedAppPort2": "[parameters('appPort2')]",
-        "nt0InstanceCount": 3
+        "nt0InstanceCount": 3,
+        "reverseProxyPort": 19081
     },
     "resources": [
         {
@@ -158,6 +159,9 @@
                     },
                     "nodeDataDrive": {
                         "value": "OS"
+                    },
+                    "reverseProxyPort": {
+                        "value": "[variables('reverseProxyPort')]"
                     }
                 }
             }
@@ -215,6 +219,9 @@
                     },
                     "nt0InstanceCount": {
                         "value": "[variables('nt0InstanceCount')]"
+                    },
+                    "reverseProxyPort": {
+                        "value": "[variables('reverseProxyPort')]"
                     },
                     "nodeDataDrive": {
                         "value": "OS"
