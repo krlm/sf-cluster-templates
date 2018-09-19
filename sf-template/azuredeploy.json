@@ -62,6 +62,13 @@
         "description": "Input endpoint1 for the application to use. Replace it with what your application uses"
       }
     },
+    "reverseProxyPort": {
+      "type": "int",
+      "defaultValue": 19081,
+      "metadata": {
+        "description": "HTTP Reverse proxy port"
+      }
+    },
     "loadBalancedAppPort2": {
       "type": "int",
       "defaultValue": 8081,
@@ -161,7 +168,8 @@
     "lbHttpProbeID0": "[concat(variables('lbID0'),'/probes/FabricHttpGatewayProbe')]",
     "lbNatPoolID0": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool')]",
     "vmNodeType0Name": "[toLower(concat('NT1', variables('vmName')))]",
-    "vmNodeType0Size": "[parameters('nodeTypeSize')]"
+    "vmNodeType0Size": "[parameters('nodeTypeSize')]",
+    "diskSize": 50
   },
   "resources": [
     {
@@ -551,6 +559,7 @@
               "version": "[parameters('vmImageVersion')]"
             },
             "osDisk": {
+              "diskSizeGB": "[variables('diskSize')]",
               "managedDisk": {
                 "storageAccountType": "Premium_LRS"
               },
@@ -612,6 +621,7 @@
               "endPort": "[variables('nt0applicationEndPort')]",
               "startPort": "[variables('nt0applicationStartPort')]"
             },
+            "reverseProxyEndpointPort": "[parameters('reverseProxyPort')]",
             "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
             "durabilityLevel": "Bronze",
             "ephemeralPorts": {
