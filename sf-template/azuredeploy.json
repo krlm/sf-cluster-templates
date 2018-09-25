@@ -127,7 +127,7 @@
       "type": "string",
       "defaultValue": "Temp",
       "allowedValues": [
-        "OS", "Temp"
+        "OS", "Temp", "Data"
       ],
       "metadata": {
         "description": "The drive to use to store data on a cluster node."
@@ -426,6 +426,21 @@
           "extensionProfile": {
             "extensions": [
               {
+                "name": "customScript",    
+                "properties": {    
+                    "publisher": "Microsoft.Compute",    
+                    "type": "CustomScriptExtension",    
+                    "typeHandlerVersion": "1.8",    
+                    "autoUpgradeMinorVersion": true,    
+                    "settings": {    
+                    "fileUris": [
+                        "https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.ps1"
+                    ],
+                    "commandToExecute": "powershell -ExecutionPolicy Unrestricted -File prepare_vm_disks.ps1"
+                    }
+                }
+            },
+              {
                 "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
                 "properties": {
                   "type": "ServiceFabricNode",
@@ -438,7 +453,7 @@
                   "settings": {
                     "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
                     "nodeTypeRef": "[variables('vmNodeType0Name')]",
-                    "dataPath": "[concat(if(equals(parameters('nodeDataDrive'), 'OS'), 'C', 'D'), ':\\\\SvcFab')]",
+                    "dataPath": "[concat(if(equals(parameters('nodeDataDrive'), 'OS'), 'C', 'F'), ':\\\\SvcFab')]",
                     "durabilityLevel": "Bronze",
                     "nicPrefixOverride": "[variables('subnet0Prefix')]",
                     "certificate": {
@@ -564,7 +579,14 @@
               },
               "caching": "ReadOnly",
               "createOption": "FromImage"
-            }
+            },
+            "dataDisks": [
+              {
+              "diskSizeGB": 128,
+              "lun": 0,
+              "createOption": "Empty"
+              }
+            ]
           }
         }
       },

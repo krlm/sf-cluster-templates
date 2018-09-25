@@ -158,7 +158,7 @@
                         "value": "[variables('nt0InstanceCount')]"
                     },
                     "nodeDataDrive": {
-                        "value": "OS"
+                        "value": "Data"
                     }
                 }
             }
